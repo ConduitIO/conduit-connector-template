@@ -20,7 +20,7 @@
 .vscode
 
 # Binary, built with `make build`
-/conduit-connector-connectorName
+/conduit-connector-connectorname
 
 ### OS ###
 .DS_Store
