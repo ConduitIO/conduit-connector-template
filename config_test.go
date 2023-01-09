@@ -1,1 +1,1 @@
-package connectorName
+package connectorname
