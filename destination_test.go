@@ -2,9 +2,10 @@ package connectorName_test
 
 import (
 	"context"
-	connectorName "github.com/conduitio/conduit-connector-connectorName"
 	"strings"
 	"testing"
+
+	connectorName "github.com/conduitio/conduit-connector-connectorName"
 )
 
 func TestConfigureDestination_FailsWhenConfigEmpty(t *testing.T) {
@@ -24,6 +25,5 @@ func TestTeardown_NoOpen(t *testing.T) {
 	err := con.Teardown(context.Background())
 	if err != nil {
 		t.Errorf("expected no error, got %v", err)
-
 	}
 }

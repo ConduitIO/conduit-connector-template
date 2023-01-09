@@ -2,6 +2,7 @@ package connectorName
 
 import (
 	"context"
+
 	sdk "github.com/conduitio/conduit-connector-sdk"
 )
 

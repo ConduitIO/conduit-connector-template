@@ -25,6 +25,5 @@ func TestTeardownSource_NoOpen(t *testing.T) {
 	err := con.Teardown(context.Background())
 	if err != nil {
 		t.Errorf("expected no error, got %v", err)
-
 	}
 }
