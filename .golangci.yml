@@ -1,0 +1,80 @@
+linters-settings:
+  gofmt:
+    simplify: false
+  govet:
+    check-shadowing: false
+  nolintlint:
+    allow-unused: false # report any unused nolint directives
+    require-explanation: true # require an explanation for nolint directives
+    require-specific: true # require nolint directives to mention the specific linter being suppressed
+  gocyclo:
+    min-complexity: 20
+  goconst:
+    ignore-tests: true
+
+linters:
+  # please, do not use `enable-all`: it's deprecated and will be removed soon.
+  # inverted configuration with `enable-all` and `disable` is not scalable during updates of golangci-lint
+  disable-all: true
+  enable:
+    - bodyclose
+    # - depguard
+    - dogsled
+    - durationcheck
+    - errcheck
+    - errname
+    # - errorlint
+    # - exhaustive
+    # - exhaustivestruct
+    - exportloopref
+    # - forbidigo
+    # - forcetypeassert
+    # - funlen
+    # - gochecknoinits
+    - goconst
+    - gocritic
+    - gocyclo
+    # - cyclop # not interested in package complexities at the moment
+    # - godot
+    - gofmt
+    # - gofumpt
+    - goheader
+    - goimports
+    - revive
+    # - gomnd
+    - gomoddirectives
+    - gomodguard
+    - goprintffuncname
+    - gosec
+    - gosimple
+    - govet
+    # - ifshort
+    - ineffassign
+    # - importas
+    # - lll
+    # - misspell
+    - makezero
+    # - nakedret
+    # - nilerr
+    # - nilnil
+    # - nlreturn
+    - noctx
+    - nolintlint
+    # - paralleltest
+    - predeclared
+    # - rowserrcheck
+    - staticcheck
+    - stylecheck
+    # - sqlclosecheck
+    # - tagliatelle
+    # - tenv
+    # - thelper
+    # - tparallel
+    - typecheck
+    - unconvert
+    # - unparam
+    - unused
+    # - wastedassign
+    - whitespace
+    # - wrapcheck
+    # - wsl
