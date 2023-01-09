@@ -2,7 +2,7 @@ module github.com/conduitio/conduit-connector-connectorName
 
 go 1.19
 
-require github.com/conduitio/conduit-connector-sdk v0.4.0
+require github.com/conduitio/conduit-connector-sdk v0.4.2
 
 require (
 	github.com/conduitio/conduit-connector-protocol v0.4.0 // indirect
