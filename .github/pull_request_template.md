@@ -8,6 +8,6 @@ Fixes # (issue)
 
 ### Quick checks:
 
-- [ ] There is no other [pull request](https://github.com/conduitio/conduit-connector-connectorName/pulls) for the same update/change.
+- [ ] There is no other [pull request](https://github.com/conduitio/conduit-connector-connectorname/pulls) for the same update/change.
 - [ ] I have written unit tests.
 - [ ] I have made sure that the PR is of reasonable size and can be easily reviewed.

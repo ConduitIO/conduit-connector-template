@@ -7,19 +7,19 @@ fi
 MODULE_NAME=$1
 if ! [[ "$MODULE_NAME" =~ ^.*\/conduit-connector-(.*)$ ]]
 then
-  echo "Module name '$MODULE_NAME' not in required format 'example/conduit-connector-connectorName'"
+  echo "Module name '$MODULE_NAME' not in required format 'example/conduit-connector-connectorname'"
   exit 1
 fi
 
 CONNECTOR_NAME=${BASH_REMATCH[1]}
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
-  LC_ALL=C find . -type f ! -name "setup.sh" -exec sed -i "" "s~github.com/conduitio/conduit-connector-connectorName~github.com/$MODULE_NAME~g" {} +
-  LC_ALL=C find . -type f ! -name "setup.sh" -exec sed -i "" "s~connectorName~$CONNECTOR_NAME~g" {} +
+  LC_ALL=C find . -type f ! -name "setup.sh" -exec sed -i "" "s~github.com/conduitio/conduit-connector-connectorname~github.com/$MODULE_NAME~g" {} +
+  LC_ALL=C find . -type f ! -name "setup.sh" -exec sed -i "" "s~connectorname~$CONNECTOR_NAME~g" {} +
   LC_ALL=C sed -i "" "s~*       @ConduitIO/conduit-core~ ~g" .github/CODEOWNERS
 else
-  find . -type f ! -name "setup.sh" -exec sed -i "s~github.com/conduitio/conduit-connector-connectorName~github.com/$MODULE_NAME~g" {} +
-  find . -type f ! -name "setup.sh" -exec sed -i "s~connectorName~$CONNECTOR_NAME~g" {} +
+  find . -type f ! -name "setup.sh" -exec sed -i "s~github.com/conduitio/conduit-connector-connectorname~github.com/$MODULE_NAME~g" {} +
+  find . -type f ! -name "setup.sh" -exec sed -i "s~connectorname~$CONNECTOR_NAME~g" {} +
   sed -i "s~*       @ConduitIO/conduit-core~ ~g" .github/CODEOWNERS
 fi
 

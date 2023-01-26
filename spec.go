@@ -1,4 +1,4 @@
-package connectorName
+package connectorname
 
 import (
 	sdk "github.com/conduitio/conduit-connector-sdk"
@@ -7,7 +7,7 @@ import (
 // Specification returns the connector's specification.
 func Specification() sdk.Specification {
 	return sdk.Specification{
-		Name:        "connectorName",
+		Name:        "connectorname",
 		Summary:     "<describe your connector>",
 		Description: "<describe your connector in detail>",
 		Version:     "v0.1.0",
