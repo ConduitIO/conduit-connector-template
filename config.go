@@ -1,58 +1,10 @@
 package connectorname
 
-import "errors"
-
-const (
-	GlobalConfigParam      = "global_config"
-	SourceConfigParam      = "source_config"
-	DestinationConfigParam = "destination_config"
-)
-
-var Required = []string{GlobalConfigParam}
-
-var (
-	ErrEmptyConfig = errors.New("missing or empty config")
-)
-
+// Config contains shared config parameters, common to the source and
+// destination. If you don't need shared parameters you can entirely remove this
+// file.
 type Config struct {
-	globalConfigParam string
-}
-
-type SourceConfig struct {
-	Config
-	sourceConfigParam string
-}
-
-type DestinationConfig struct {
-	Config
-	destinationConfigParam string
-}
-
-func ParseSourceConfig(cfg map[string]string) (SourceConfig, error) {
-	err := checkEmpty(cfg)
-	if err != nil {
-		return SourceConfig{}, err
-	}
-	return SourceConfig{
-		Config:            Config{globalConfigParam: cfg[GlobalConfigParam]},
-		sourceConfigParam: cfg[SourceConfigParam],
-	}, nil
-}
-
-func ParseDestinationConfig(cfg map[string]string) (DestinationConfig, error) {
-	err := checkEmpty(cfg)
-	if err != nil {
-		return DestinationConfig{}, err
-	}
-	return DestinationConfig{
-		Config:                 Config{globalConfigParam: cfg[GlobalConfigParam]},
-		destinationConfigParam: cfg[DestinationConfigParam],
-	}, nil
-}
-
-func checkEmpty(cfg map[string]string) error {
-	if len(cfg) == 0 {
-		return ErrEmptyConfig
-	}
-	return nil
+	// GlobalConfigParam is named global_config_param_name and needs to be
+	// provided by the user.
+	GlobalConfigParam string `json:"global_config_param_name" validate:"required"`
 }
