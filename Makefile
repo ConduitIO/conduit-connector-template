@@ -1,4 +1,6 @@
-.PHONY: build test test-integration
+.PHONY: build test test-integration generate install-paramgen
+
+VERSION=$(shell git describe --tags --dirty --always)
 
 VERSION=$(shell git describe --tags --dirty --always)
 
@@ -14,3 +16,9 @@ test-integration:
 	go test $(GOTEST_FLAGS) -v -race ./...; ret=$$?; \
 		docker compose -f test/docker-compose.yml down; \
 		exit $$ret
+
+generate:
+	go generate ./...
+
+install-paramgen:
+	go install github.com/conduitio/conduit-connector-sdk/cmd/paramgen@latest
