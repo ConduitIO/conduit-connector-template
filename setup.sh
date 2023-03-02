@@ -2,6 +2,7 @@
 if [ $# -eq 0 ]
 then
     echo "Module name not provided."
+    exit 1
 fi
 
 MODULE_NAME=$1
