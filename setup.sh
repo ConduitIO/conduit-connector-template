@@ -8,7 +8,8 @@ fi
 MODULE_NAME=$1
 if ! [[ "$MODULE_NAME" =~ ^github.com\/.*\/conduit-connector-(.*)$ ]]
 then
-  echo "Module name ${MODULE_NAME} not in recommended format github.com/repository/conduit-connector-connectorname.\n"
+  echo "Module name ${MODULE_NAME} not in recommended format \"github.com/repository/conduit-connector-connectorname\"."
+  echo
   echo "Certain things (such as pull request templates) will not work correctly."
   while true; do
       read -n1 -p "Are you sure you want to continue? [y/n] " yn
