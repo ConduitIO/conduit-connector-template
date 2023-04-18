@@ -40,7 +40,7 @@ linters:
     # - gofumpt
     - goheader
     - goimports
-    - revive
+    # - revive # lots of unused parameters in the template, would be helpful for the user to keep them
     # - gomnd
     - gomoddirectives
     - gomodguard
