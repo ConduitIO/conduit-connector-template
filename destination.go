@@ -24,7 +24,7 @@ type DestinationConfig struct {
 
 func NewDestination() sdk.Destination {
 	// Create Destination and wrap it in the default middleware.
-	return sdk.DestinationWithMiddleware(&Destination{})
+	return sdk.DestinationWithMiddleware(&Destination{}, sdk.DefaultDestinationMiddleware()...)
 }
 
 func (d *Destination) Parameters() map[string]sdk.Parameter {
