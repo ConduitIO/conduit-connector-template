@@ -2,7 +2,10 @@ module github.com/conduitio/conduit-connector-connectorname
 
 go 1.20
 
-require github.com/conduitio/conduit-connector-sdk v0.6.0
+require (
+	github.com/conduitio/conduit-connector-sdk v0.6.0
+	github.com/matryer/is v1.4.1
+)
 
 require (
 	github.com/Masterminds/goutils v1.1.1 // indirect
@@ -18,7 +21,6 @@ require (
 	github.com/huandu/xstrings v1.3.3 // indirect
 	github.com/imdario/mergo v0.3.11 // indirect
 	github.com/jpillora/backoff v1.0.0 // indirect
-	github.com/matryer/is v1.4.1 // indirect
 	github.com/mattn/go-colorable v0.1.12 // indirect
 	github.com/mattn/go-isatty v0.0.14 // indirect
 	github.com/mitchellh/copystructure v1.0.0 // indirect
