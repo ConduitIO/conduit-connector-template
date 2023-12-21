@@ -1,4 +1,4 @@
-.PHONY: build test test-integration generate install-paramgen install-tools
+.PHONY: build test test-integration generate install-paramgen install-tools golangci-lint-install
 
 VERSION=$(shell git describe --tags --dirty --always)
 
@@ -25,3 +25,6 @@ install-tools:
 	@echo Installing tools from tools.go
 	@go list -e -f '{{ join .Imports "\n" }}' tools.go | xargs -tI % go install %
 	@go mod tidy
+
+lint:
+	golangci-lint run -v
