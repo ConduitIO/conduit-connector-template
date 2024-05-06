@@ -43,7 +43,7 @@ some repository settings.
 
    ![Allow auto-merge](https://github.com/ConduitIO/conduit-connector-template/assets/8320753/695b15f0-85b4-49cb-966d-649e9bf03455)
 
-2. Navigate to Settings -> Branch and add a branch protection rule.
+2. Navigate to Settings -> Branches and add a branch protection rule.
 
    ![Add branch protection rule](https://github.com/ConduitIO/conduit-connector-template/assets/8320753/9f5a07bc-d141-42b9-9918-e8d9cc648482)
 
