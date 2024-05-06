@@ -12,7 +12,7 @@ start working on a Conduit connector in a matter of seconds.
    git add -A
    git commit -m "initialize repository"
    ```
-3. Set up automatic dependabot PR merges.
+3. Set up [automatic Dependabot PR merges](#automatically-merging-dependabot-prs).
 
 With that, you're all set up and ready to start working on your connector! As a next step, we recommend that you 
 check out the [Conduit Connector SDK](https://github.com/ConduitIO/conduit-connector-sdk).
@@ -25,12 +25,12 @@ check out the [Conduit Connector SDK](https://github.com/ConduitIO/conduit-conne
 * A [GitHub workflow](/.github/workflows/build.yml) to build the code and run the tests.
 * A [GitHub workflow](/.github/workflows/lint.yml) to run a pre-configured set of linters.
 * A [GitHub workflow](/.github/workflows/release.yml) which automatically creates a release when a tag is pushed.
-* A [dependabot setup](/.github/dependabot.yml) which checks your dependencies for available updates and 
+* A [Dependabot setup](/.github/dependabot.yml) which checks your dependencies for available updates and 
 [merges minor version upgrades](/.github/workflows/dependabot-auto-merge-go.yml) automatically.
 * [Issue](/.github/ISSUE_TEMPLATE) and [PR templates](/.github/pull_request_template.md).
 * A [README template](/README_TEMPLATE.md).
 
-## Automatically merging dependabot PRs
+## Automatically merging Dependabot PRs
 
 > [!NOTE]
 > This applies only to public connector repositories, as branch protection rules are not enforced in private repositories.
