@@ -52,14 +52,14 @@ func (d *Destination) Configure(ctx context.Context, cfg map[string]string) erro
 	return nil
 }
 
-func (d *Destination) Open(ctx context.Context) error {
+func (d *Destination) Open(_ context.Context) error {
 	// Open is called after Configure to signal the plugin it can prepare to
 	// start writing records. If needed, the plugin should open connections in
 	// this function.
 	return nil
 }
 
-func (d *Destination) Write(ctx context.Context, records []sdk.Record) (int, error) {
+func (d *Destination) Write(_ context.Context, _ []sdk.Record) (int, error) {
 	// Write writes len(r) records from r to the destination right away without
 	// caching. It should return the number of records written from r
 	// (0 <= n <= len(r)) and any error encountered that caused the write to
@@ -67,7 +67,7 @@ func (d *Destination) Write(ctx context.Context, records []sdk.Record) (int, err
 	return 0, nil
 }
 
-func (d *Destination) Teardown(ctx context.Context) error {
+func (d *Destination) Teardown(_ context.Context) error {
 	// Teardown signals to the plugin that all records were written and there
 	// will be no more calls to any other function. After Teardown returns, the
 	// plugin should be ready for a graceful shutdown.
