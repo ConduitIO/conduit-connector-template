@@ -52,7 +52,7 @@ func (s *Source) Configure(ctx context.Context, cfg map[string]string) error {
 	return nil
 }
 
-func (s *Source) Open(ctx context.Context, pos sdk.Position) error {
+func (s *Source) Open(_ context.Context, _ sdk.Position) error {
 	// Open is called after Configure to signal the plugin it can prepare to
 	// start producing records. If needed, the plugin should open connections in
 	// this function. The position parameter will contain the position of the
@@ -62,7 +62,7 @@ func (s *Source) Open(ctx context.Context, pos sdk.Position) error {
 	return nil
 }
 
-func (s *Source) Read(ctx context.Context) (sdk.Record, error) {
+func (s *Source) Read(_ context.Context) (sdk.Record, error) {
 	// Read returns a new Record and is supposed to block until there is either
 	// a new record or the context gets cancelled. It can also return the error
 	// ErrBackoffRetry to signal to the SDK it should call Read again with a
@@ -80,7 +80,7 @@ func (s *Source) Read(ctx context.Context) (sdk.Record, error) {
 	return sdk.Record{}, nil
 }
 
-func (s *Source) Ack(ctx context.Context, position sdk.Position) error {
+func (s *Source) Ack(_ context.Context, _ sdk.Position) error {
 	// Ack signals to the implementation that the record with the supplied
 	// position was successfully processed. This method might be called after
 	// the context of Read is already cancelled, since there might be
@@ -90,7 +90,7 @@ func (s *Source) Ack(ctx context.Context, position sdk.Position) error {
 	return nil
 }
 
-func (s *Source) Teardown(ctx context.Context) error {
+func (s *Source) Teardown(_ context.Context) error {
 	// Teardown signals to the plugin that there will be no more calls to any
 	// other function. After Teardown returns, the plugin should be ready for a
 	// graceful shutdown.
