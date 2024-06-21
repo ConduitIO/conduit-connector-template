@@ -6,6 +6,8 @@ import (
 	"context"
 	"fmt"
 
+	"github.com/conduitio/conduit-commons/config"
+	"github.com/conduitio/conduit-commons/opencdc"
 	sdk "github.com/conduitio/conduit-connector-sdk"
 )
 
@@ -27,14 +29,14 @@ func NewDestination() sdk.Destination {
 	return sdk.DestinationWithMiddleware(&Destination{}, sdk.DefaultDestinationMiddleware()...)
 }
 
-func (d *Destination) Parameters() map[string]sdk.Parameter {
+func (d *Destination) Parameters() config.Parameters {
 	// Parameters is a map of named Parameters that describe how to configure
 	// the Destination. Parameters can be generated from DestinationConfig with
 	// paramgen.
 	return d.config.Parameters()
 }
 
-func (d *Destination) Configure(ctx context.Context, cfg map[string]string) error {
+func (d *Destination) Configure(ctx context.Context, cfg config.Config) error {
 	// Configure is the first function to be called in a connector. It provides
 	// the connector with the configuration that can be validated and stored.
 	// In case the configuration is not valid it should return an error.
@@ -45,7 +47,7 @@ func (d *Destination) Configure(ctx context.Context, cfg map[string]string) erro
 	// can do them manually here.
 
 	sdk.Logger(ctx).Info().Msg("Configuring Destination...")
-	err := sdk.Util.ParseConfig(cfg, &d.config)
+	err := sdk.Util.ParseConfig(ctx, cfg, &d.config)
 	if err != nil {
 		return fmt.Errorf("invalid config: %w", err)
 	}
@@ -59,7 +61,7 @@ func (d *Destination) Open(_ context.Context) error {
 	return nil
 }
 
-func (d *Destination) Write(_ context.Context, _ []sdk.Record) (int, error) {
+func (d *Destination) Write(_ context.Context, _ []opencdc.Record) (int, error) {
 	// Write writes len(r) records from r to the destination right away without
 	// caching. It should return the number of records written from r
 	// (0 <= n <= len(r)) and any error encountered that caused the write to
