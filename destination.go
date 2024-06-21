@@ -47,7 +47,7 @@ func (d *Destination) Configure(ctx context.Context, cfg config.Config) error {
 	// can do them manually here.
 
 	sdk.Logger(ctx).Info().Msg("Configuring Destination...")
-	err := sdk.Util.ParseConfig(ctx, cfg, &d.config)
+	err := sdk.Util.ParseConfig(ctx, cfg, &d.config, NewDestination().Parameters())
 	if err != nil {
 		return fmt.Errorf("invalid config: %w", err)
 	}

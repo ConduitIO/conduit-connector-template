@@ -47,7 +47,7 @@ func (s *Source) Configure(ctx context.Context, cfg config.Config) error {
 	// can do them manually here.
 
 	sdk.Logger(ctx).Info().Msg("Configuring Source...")
-	err := sdk.Util.ParseConfig(ctx, cfg, &s.config)
+	err := sdk.Util.ParseConfig(ctx, cfg, &s.config, NewSource().Parameters())
 	if err != nil {
 		return fmt.Errorf("invalid config: %w", err)
 	}
