@@ -6,6 +6,8 @@ import (
 	"context"
 	"fmt"
 
+	"github.com/conduitio/conduit-commons/config"
+	"github.com/conduitio/conduit-commons/opencdc"
 	sdk "github.com/conduitio/conduit-connector-sdk"
 )
 
@@ -13,7 +15,7 @@ type Source struct {
 	sdk.UnimplementedSource
 
 	config           SourceConfig
-	lastPositionRead sdk.Position //nolint:unused // this is just an example
+	lastPositionRead opencdc.Position //nolint:unused // this is just an example
 }
 
 type SourceConfig struct {
@@ -28,13 +30,13 @@ func NewSource() sdk.Source {
 	return sdk.SourceWithMiddleware(&Source{}, sdk.DefaultSourceMiddleware()...)
 }
 
-func (s *Source) Parameters() map[string]sdk.Parameter {
+func (s *Source) Parameters() config.Parameters {
 	// Parameters is a map of named Parameters that describe how to configure
 	// the Source. Parameters can be generated from SourceConfig with paramgen.
 	return s.config.Parameters()
 }
 
-func (s *Source) Configure(ctx context.Context, cfg map[string]string) error {
+func (s *Source) Configure(ctx context.Context, cfg config.Config) error {
 	// Configure is the first function to be called in a connector. It provides
 	// the connector with the configuration that can be validated and stored.
 	// In case the configuration is not valid it should return an error.
@@ -45,14 +47,14 @@ func (s *Source) Configure(ctx context.Context, cfg map[string]string) error {
 	// can do them manually here.
 
 	sdk.Logger(ctx).Info().Msg("Configuring Source...")
-	err := sdk.Util.ParseConfig(cfg, &s.config)
+	err := sdk.Util.ParseConfig(ctx, cfg, &s.config, NewSource().Parameters())
 	if err != nil {
 		return fmt.Errorf("invalid config: %w", err)
 	}
 	return nil
 }
 
-func (s *Source) Open(_ context.Context, _ sdk.Position) error {
+func (s *Source) Open(_ context.Context, _ opencdc.Position) error {
 	// Open is called after Configure to signal the plugin it can prepare to
 	// start producing records. If needed, the plugin should open connections in
 	// this function. The position parameter will contain the position of the
@@ -62,7 +64,7 @@ func (s *Source) Open(_ context.Context, _ sdk.Position) error {
 	return nil
 }
 
-func (s *Source) Read(_ context.Context) (sdk.Record, error) {
+func (s *Source) Read(_ context.Context) (opencdc.Record, error) {
 	// Read returns a new Record and is supposed to block until there is either
 	// a new record or the context gets cancelled. It can also return the error
 	// ErrBackoffRetry to signal to the SDK it should call Read again with a
@@ -77,10 +79,10 @@ func (s *Source) Read(_ context.Context) (sdk.Record, error) {
 	// After Read returns an error the function won't be called again (except if
 	// the error is ErrBackoffRetry, as mentioned above).
 	// Read can be called concurrently with Ack.
-	return sdk.Record{}, nil
+	return opencdc.Record{}, nil
 }
 
-func (s *Source) Ack(_ context.Context, _ sdk.Position) error {
+func (s *Source) Ack(_ context.Context, _ opencdc.Position) error {
 	// Ack signals to the implementation that the record with the supplied
 	// position was successfully processed. This method might be called after
 	// the context of Read is already cancelled, since there might be
