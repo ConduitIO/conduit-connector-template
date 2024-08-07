@@ -7,9 +7,14 @@ import (
 	"github.com/conduitio/conduit-commons/config"
 )
 
+const (
+	DestinationConfigDestinationConfigParam = "destinationConfigParam"
+	DestinationConfigGlobalConfigParamName  = "global_config_param_name"
+)
+
 func (DestinationConfig) Parameters() map[string]config.Parameter {
 	return map[string]config.Parameter{
-		"destinationConfigParam": {
+		DestinationConfigDestinationConfigParam: {
 			Default:     "yes",
 			Description: "DestinationConfigParam must be either yes or no (defaults to yes).",
 			Type:        config.ParameterTypeString,
@@ -17,7 +22,7 @@ func (DestinationConfig) Parameters() map[string]config.Parameter {
 				config.ValidationInclusion{List: []string{"yes", "no"}},
 			},
 		},
-		"global_config_param_name": {
+		DestinationConfigGlobalConfigParamName: {
 			Default:     "",
 			Description: "GlobalConfigParam is named global_config_param_name and needs to be\nprovided by the user.",
 			Type:        config.ParameterTypeString,

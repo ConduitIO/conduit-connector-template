@@ -7,9 +7,14 @@ import (
 	"github.com/conduitio/conduit-commons/config"
 )
 
+const (
+	SourceConfigFoo                   = "foo"
+	SourceConfigGlobalConfigParamName = "global_config_param_name"
+)
+
 func (SourceConfig) Parameters() map[string]config.Parameter {
 	return map[string]config.Parameter{
-		"foo": {
+		SourceConfigFoo: {
 			Default:     "",
 			Description: "SourceConfigParam is named foo and must be provided by the user.",
 			Type:        config.ParameterTypeString,
@@ -17,7 +22,7 @@ func (SourceConfig) Parameters() map[string]config.Parameter {
 				config.ValidationRequired{},
 			},
 		},
-		"global_config_param_name": {
+		SourceConfigGlobalConfigParamName: {
 			Default:     "",
 			Description: "GlobalConfigParam is named global_config_param_name and needs to be\nprovided by the user.",
 			Type:        config.ParameterTypeString,
