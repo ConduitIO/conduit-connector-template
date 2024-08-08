@@ -1,9 +1,8 @@
 package main
 
 import (
-	sdk "github.com/conduitio/conduit-connector-sdk"
-
 	connectorname "github.com/conduitio/conduit-connector-connectorname"
+	sdk "github.com/conduitio/conduit-connector-sdk"
 )
 
 func main() {
