@@ -4,6 +4,10 @@ VERSION=$(shell git describe --tags --dirty --always)
 build:
 	go build -ldflags "-X 'github.com/conduitio/conduit-connector-connectorname.version=${VERSION}'" -o conduit-connector-connectorname cmd/connector/main.go
 
+.PHONY: build-debug
+build-debug:
+	go build -gcflags=all="-N -l" -ldflags="-X 'github.com/conduitio/conduit-connector-connectorname.version=${VERSION}'" -o conduit-connector-connectorname cmd/connector/main.go
+
 .PHONY: test
 test:
 	go test $(GOTEST_FLAGS) -race ./...
