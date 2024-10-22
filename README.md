@@ -22,7 +22,7 @@ check out the [Conduit Connector SDK](https://github.com/ConduitIO/conduit-conne
 * Skeleton code for the connector's configuration, source and destination.
 * Example unit tests.
 * A [Makefile](/Makefile) with commonly used targets.
-* A [GitHub workflow](/.github/workflows/build.yml) to build the code and run the tests.
+* A [GitHub workflow](/.github/workflows/test.yml) to build the code and run the tests.
 * A [GitHub workflow](/.github/workflows/lint.yml) to run a pre-configured set of linters.
 * A [GitHub workflow](/.github/workflows/release.yml) which automatically creates a release when a tag is pushed.
 * A [Dependabot setup](/.github/dependabot.yml) which checks your dependencies for available updates and 
