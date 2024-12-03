@@ -21,6 +21,11 @@ type DestinationConfig struct {
 	DestinationConfigParam string `validate:"inclusion=yes|no" default:"yes"`
 }
 
+func (s *DestinationConfig) Validate(ctx context.Context) error {
+	// Custom validation or parsing should be implemented here.
+	return nil
+}
+
 func NewDestination() sdk.Destination {
 	// Create Destination and wrap it in the default middleware.
 	return sdk.DestinationWithMiddleware(&Destination{})

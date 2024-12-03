@@ -22,6 +22,11 @@ type SourceConfig struct {
 	SourceConfigParam string `json:"foo" validate:"required"`
 }
 
+func (s *SourceConfig) Validate(ctx context.Context) error {
+	// Custom validation or parsing should be implemented here.
+	return nil
+}
+
 func NewSource() sdk.Source {
 	// Create Source and wrap it in the default middleware.
 	return sdk.SourceWithMiddleware(&Source{})
