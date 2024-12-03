@@ -22,7 +22,7 @@ type SourceConfig struct {
 	SourceConfigParam string `json:"foo" validate:"required"`
 }
 
-func (s *SourceConfig) Validate(ctx context.Context) error {
+func (s *SourceConfig) Validate(context.Context) error {
 	// Custom validation or parsing should be implemented here.
 	return nil
 }

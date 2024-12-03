@@ -21,7 +21,7 @@ type DestinationConfig struct {
 	DestinationConfigParam string `validate:"inclusion=yes|no" default:"yes"`
 }
 
-func (s *DestinationConfig) Validate(ctx context.Context) error {
+func (s *DestinationConfig) Validate(context.Context) error {
 	// Custom validation or parsing should be implemented here.
 	return nil
 }
