@@ -1,7 +1,5 @@
 package connectorname
 
-//go:generate paramgen -output=paramgen_dest.go DestinationConfig
-
 import (
 	"context"
 
