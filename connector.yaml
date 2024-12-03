@@ -1,0 +1,7 @@
+version: "1.0"
+specification:
+  name: "connectorname"
+  summary: "<describe your connector>"
+  description: "<describe your connector in detail>"
+  version: (devel)
+  author: "<your name>"
