@@ -8,8 +8,17 @@ import (
 )
 
 const (
-	SourceConfigFoo                   = "foo"
-	SourceConfigGlobalConfigParamName = "global_config_param_name"
+	SourceConfigFoo                            = "foo"
+	SourceConfigGlobalConfigParamName          = "global_config_param_name"
+	SourceConfigSdkBatchDelay                  = "sdk.batch.delay"
+	SourceConfigSdkBatchSize                   = "sdk.batch.size"
+	SourceConfigSdkSchemaContextEnabled        = "sdk.schema.context.enabled"
+	SourceConfigSdkSchemaContextName           = "sdk.schema.context.name"
+	SourceConfigSdkSchemaExtractKeyEnabled     = "sdk.schema.extract.key.enabled"
+	SourceConfigSdkSchemaExtractKeySubject     = "sdk.schema.extract.key.subject"
+	SourceConfigSdkSchemaExtractPayloadEnabled = "sdk.schema.extract.payload.enabled"
+	SourceConfigSdkSchemaExtractPayloadSubject = "sdk.schema.extract.payload.subject"
+	SourceConfigSdkSchemaExtractType           = "sdk.schema.extract.type"
 )
 
 func (SourceConfig) Parameters() map[string]config.Parameter {
@@ -28,6 +37,66 @@ func (SourceConfig) Parameters() map[string]config.Parameter {
 			Type:        config.ParameterTypeString,
 			Validations: []config.Validation{
 				config.ValidationRequired{},
+			},
+		},
+		SourceConfigSdkBatchDelay: {
+			Default:     "0",
+			Description: "Maximum delay before an incomplete batch is read from the source.",
+			Type:        config.ParameterTypeDuration,
+			Validations: []config.Validation{
+				config.ValidationGreaterThan{V: -1},
+			},
+		},
+		SourceConfigSdkBatchSize: {
+			Default:     "0",
+			Description: "Maximum size of batch before it gets read from the source.",
+			Type:        config.ParameterTypeInt,
+			Validations: []config.Validation{
+				config.ValidationGreaterThan{V: -1},
+			},
+		},
+		SourceConfigSdkSchemaContextEnabled: {
+			Default:     "true",
+			Description: "Specifies whether to use a schema context name. If set to false, no schema context name will\nbe used, and schemas will be saved with the subject name specified in the connector\n(not safe because of name conflicts).",
+			Type:        config.ParameterTypeBool,
+			Validations: []config.Validation{},
+		},
+		SourceConfigSdkSchemaContextName: {
+			Default:     "",
+			Description: "Schema context name to be used. Used as a prefix for all schema subject names.\nIf empty, defaults to the connector ID.",
+			Type:        config.ParameterTypeString,
+			Validations: []config.Validation{},
+		},
+		SourceConfigSdkSchemaExtractKeyEnabled: {
+			Default:     "true",
+			Description: "Whether to extract and encode the record key with a schema.",
+			Type:        config.ParameterTypeBool,
+			Validations: []config.Validation{},
+		},
+		SourceConfigSdkSchemaExtractKeySubject: {
+			Default:     "key",
+			Description: "The subject of the key schema. If the record metadata contains the field\n\"opencdc.collection\" it is prepended to the subject name and separated\nwith a dot.",
+			Type:        config.ParameterTypeString,
+			Validations: []config.Validation{},
+		},
+		SourceConfigSdkSchemaExtractPayloadEnabled: {
+			Default:     "true",
+			Description: "Whether to extract and encode the record payload with a schema.",
+			Type:        config.ParameterTypeBool,
+			Validations: []config.Validation{},
+		},
+		SourceConfigSdkSchemaExtractPayloadSubject: {
+			Default:     "payload",
+			Description: "The subject of the payload schema. If the record metadata contains the\nfield \"opencdc.collection\" it is prepended to the subject name and\nseparated with a dot.",
+			Type:        config.ParameterTypeString,
+			Validations: []config.Validation{},
+		},
+		SourceConfigSdkSchemaExtractType: {
+			Default:     "avro",
+			Description: "The type of the payload schema.",
+			Type:        config.ParameterTypeString,
+			Validations: []config.Validation{
+				config.ValidationInclusion{List: []string{"avro"}},
 			},
 		},
 	}

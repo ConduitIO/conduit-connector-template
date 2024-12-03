@@ -8,8 +8,16 @@ import (
 )
 
 const (
-	DestinationConfigDestinationConfigParam = "destinationConfigParam"
-	DestinationConfigGlobalConfigParamName  = "global_config_param_name"
+	DestinationConfigDestinationConfigParam         = "destinationConfigParam"
+	DestinationConfigGlobalConfigParamName          = "global_config_param_name"
+	DestinationConfigSdkBatchDelay                  = "sdk.batch.delay"
+	DestinationConfigSdkBatchSize                   = "sdk.batch.size"
+	DestinationConfigSdkRateBurst                   = "sdk.rate.burst"
+	DestinationConfigSdkRatePerSecond               = "sdk.rate.perSecond"
+	DestinationConfigSdkRecordFormat                = "sdk.record.format"
+	DestinationConfigSdkRecordFormatOptions         = "sdk.record.format.options"
+	DestinationConfigSdkSchemaExtractKeyEnabled     = "sdk.schema.extract.key.enabled"
+	DestinationConfigSdkSchemaExtractPayloadEnabled = "sdk.schema.extract.payload.enabled"
 )
 
 func (DestinationConfig) Parameters() map[string]config.Parameter {
@@ -29,6 +37,62 @@ func (DestinationConfig) Parameters() map[string]config.Parameter {
 			Validations: []config.Validation{
 				config.ValidationRequired{},
 			},
+		},
+		DestinationConfigSdkBatchDelay: {
+			Default:     "0",
+			Description: "Maximum delay before an incomplete batch is written to the destination.",
+			Type:        config.ParameterTypeDuration,
+			Validations: []config.Validation{
+				config.ValidationGreaterThan{V: -1},
+			},
+		},
+		DestinationConfigSdkBatchSize: {
+			Default:     "0",
+			Description: "Maximum size of batch before it gets written to the destination.",
+			Type:        config.ParameterTypeInt,
+			Validations: []config.Validation{
+				config.ValidationGreaterThan{V: -1},
+			},
+		},
+		DestinationConfigSdkRateBurst: {
+			Default:     "0",
+			Description: "Allow bursts of at most X records (0 or less means that bursts are not\nlimited). Only takes effect if a rate limit per second is set. Note that\nif `sdk.batch.size` is bigger than `sdk.rate.burst`, the effective batch\nsize will be equal to `sdk.rate.burst`.",
+			Type:        config.ParameterTypeInt,
+			Validations: []config.Validation{
+				config.ValidationGreaterThan{V: -1},
+			},
+		},
+		DestinationConfigSdkRatePerSecond: {
+			Default:     "0",
+			Description: "Maximum number of records written per second (0 means no rate limit).",
+			Type:        config.ParameterTypeFloat,
+			Validations: []config.Validation{
+				config.ValidationGreaterThan{V: -1},
+			},
+		},
+		DestinationConfigSdkRecordFormat: {
+			Default:     "opencdc/json",
+			Description: "The format of the output record. See the Conduit documentation for a full\nlist of supported formats (https://conduit.io/docs/using/connectors/configuration-parameters/output-format).",
+			Type:        config.ParameterTypeString,
+			Validations: []config.Validation{},
+		},
+		DestinationConfigSdkRecordFormatOptions: {
+			Default:     "",
+			Description: "Options to configure the chosen output record format. Options are normally\nkey=value pairs separated with comma (e.g. opt1=val2,opt2=val2), except\nfor the `template` record format, where options are a Go template.",
+			Type:        config.ParameterTypeString,
+			Validations: []config.Validation{},
+		},
+		DestinationConfigSdkSchemaExtractKeyEnabled: {
+			Default:     "true",
+			Description: "Whether to extract and decode the record key with a schema.",
+			Type:        config.ParameterTypeBool,
+			Validations: []config.Validation{},
+		},
+		DestinationConfigSdkSchemaExtractPayloadEnabled: {
+			Default:     "true",
+			Description: "Whether to extract and decode the record payload with a schema.",
+			Type:        config.ParameterTypeBool,
+			Validations: []config.Validation{},
 		},
 	}
 }
