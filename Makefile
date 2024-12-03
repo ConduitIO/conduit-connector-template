@@ -2,7 +2,7 @@ VERSION=$(shell git describe --tags --dirty --always)
 
 .PHONY: build
 build:
-	sed -i '/specification:/,/version:/ s/version: .*/version: "'"${VERSION}"'"/' connector.yaml
+	sed -i '/specification:/,/version:/ s/version: .*/version: '"${VERSION}"'/' connector.yaml
 	go build -o conduit-connector-connectorname cmd/connector/main.go
 
 .PHONY: test
