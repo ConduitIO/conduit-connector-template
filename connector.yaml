@@ -1,19 +1,12 @@
 version: "1.0"
 specification:
   name: connectorname
-  summary: <describe your connector>
-  description: <describe your connector in detail>
-  version: (devel)
-  author: <your name>
+  summary: A brief description of your connector.
+  description: A detailed description of your connector.
+  version: v0.0.1
+  author: Your Name
   source:
     parameters:
-      - name: foo
-        description: SourceConfigParam is named foo and must be provided by the user.
-        type: string
-        default: ""
-        validations:
-          - type: required
-            value: ""
       - name: global_config_param_name
         description: |-
           GlobalConfigParam is named global_config_param_name and needs to be
@@ -85,6 +78,13 @@ specification:
         validations:
           - type: inclusion
             value: avro
+      - name: sourceConfigParam
+        description: SourceConfigParam is named foo and must be provided by the user.
+        type: string
+        default: ""
+        validations:
+          - type: required
+            value: ""
   destination:
     parameters:
       - name: destinationConfigParam

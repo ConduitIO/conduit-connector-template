@@ -19,7 +19,7 @@ type SourceConfig struct {
 	// Config includes parameters that are the same in the source and destination.
 	Config
 	// SourceConfigParam is named foo and must be provided by the user.
-	SourceConfigParam string `json:"foo" validate:"required"`
+	SourceConfigParam string `json:"sourceConfigParam" validate:"required"`
 }
 
 func (s *SourceConfig) Validate(context.Context) error {
