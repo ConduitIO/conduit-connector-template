@@ -1,10 +1,18 @@
+//go:generate specgen
+
 package connectorname
 
-import sdk "github.com/conduitio/conduit-connector-sdk"
+import (
+	_ "embed"
 
-// Connector combines all constructors for each plugin in one struct.
+	sdk "github.com/conduitio/conduit-connector-sdk"
+)
+
+//go:embed connector.yaml
+var specs string
+
 var Connector = sdk.Connector{
-	NewSpecification: Specification,
+	NewSpecification: sdk.YAMLSpecification(specs),
 	NewSource:        NewSource,
 	NewDestination:   NewDestination,
 }
