@@ -14,9 +14,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-TAG=$1
+# Get the directory where the script is located
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-source ./check_semver.sh
+# Source the check_semver.sh script using the script directory
+source "${SCRIPT_DIR}/check_semver.sh"
 
 TAG=$1
 
