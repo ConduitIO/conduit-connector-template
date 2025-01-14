@@ -14,7 +14,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-source ./check_semver.sh
+# Get the directory where the script is located
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+# Source the check_semver.sh script using the script directory
+source "${SCRIPT_DIR}/check_semver.sh"
 
 get_spec_version() {
     local yaml_file=$1
