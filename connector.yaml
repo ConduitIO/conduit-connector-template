@@ -79,7 +79,7 @@ specification:
           - type: inclusion
             value: avro
       - name: sourceConfigParam
-        description: SourceConfigParam is named foo and must be provided by the user.
+        description: SourceConfigParam must be provided by the user.
         type: string
         default: ""
         validations:
