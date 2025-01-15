@@ -19,15 +19,15 @@ SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 source "${SCRIPT_DIR}/common.sh"
 
-HAS_UNCOMMITTED=`git status --porcelain=v1 2>/dev/null | wc -l | awk '{print $1}'`
+HAS_UNCOMMITTED=$(git status --porcelain=v1 2>/dev/null | wc -l | awk '{print $1}')
 if (( $HAS_UNCOMMITTED != 0 )); then
   echo "You have uncommitted changes, cannot tag."
   exit 1
 fi
 
-LAST_COMMIT=`git log -1 --oneline`
-BRANCH=`git rev-parse --abbrev-ref HEAD`
-CURRENT_TAG=`git describe --tags --abbrev=0`
+LAST_COMMIT=$(git log -1 --oneline)
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
+CURRENT_TAG=$(git describe --tags --abbrev=0)
 V_TAG=$(get_spec_version connector.yaml)
 MSG="You are about to bump the version from ${CURRENT_TAG} to ${V_TAG}.
 Current commit is '${LAST_COMMIT}' on branch '${BRANCH}'.
@@ -41,7 +41,7 @@ while true; do
     case $yn in
         [Yy]* )
             git tag -a $V_TAG -m "Release: $V_TAG"
-            # git push origin $V_TAG
+            git push origin $V_TAG
             break;;
         [Nn]* ) exit;;
         * ) echo "Please answer yes or no.";;
