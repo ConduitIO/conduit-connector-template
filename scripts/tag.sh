@@ -39,7 +39,10 @@ while true; do
     read -p "Are you sure you want to continue? [y/n]" yn
     echo
     case $yn in
-        [Yy]* ) git tag -a $V_TAG -m "Release: $V_TAG" && git push origin $V_TAG; break;;
+        [Yy]* )
+            git tag -a $V_TAG -m "Release: $V_TAG"
+            # git push origin $V_TAG
+            break;;
         [Nn]* ) exit;;
         * ) echo "Please answer yes or no.";;
     esac
