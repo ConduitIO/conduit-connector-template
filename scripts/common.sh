@@ -24,3 +24,13 @@ check_semver() {
     fi
     return 0
 }
+
+get_spec_version() {
+    local yaml_file=$1
+
+    if command -v yq &> /dev/null; then
+        yq '.specification.version' "$yaml_file"
+    else
+        sed -n '/specification:/,/version:/ s/.*version: //p' "$yaml_file" | tail -1
+    fi
+}

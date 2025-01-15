@@ -17,15 +17,7 @@
 # Get the directory where the script is located
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-# Source the check_semver.sh script using the script directory
-source "${SCRIPT_DIR}/check_semver.sh"
-
-TAG=$1
-
-if ! check_semver "$TAG"; then
-    echo "$TAG is NOT a valid semver string"
-    exit 1
-fi
+source "${SCRIPT_DIR}/common.sh"
 
 V_TAG="v$TAG"
 HAS_UNCOMMITTED=`git status --porcelain=v1 2>/dev/null | wc -l | awk '{print $1}'`
@@ -36,7 +28,7 @@ fi
 
 LAST_COMMIT=`git log -1 --oneline`
 BRANCH=`git rev-parse --abbrev-ref HEAD`
-CURRENT_TAG=`git describe --tags --abbrev=0`
+CURRENT_TAG=$(get_spec_version connector.yaml)
 MSG="You are about to bump the version from ${CURRENT_TAG} to ${V_TAG}.\nCurrent commit is '${LAST_COMMIT}' on branch '${BRANCH}'.\nThe release process is automatic and quick, so if you make a mistake, everyone will see it very soon.\n"
 while true; do
     printf "${MSG}"

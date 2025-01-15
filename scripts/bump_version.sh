@@ -17,18 +17,7 @@
 # Get the directory where the script is located
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-# Source the check_semver.sh script using the script directory
-source "${SCRIPT_DIR}/check_semver.sh"
-
-get_spec_version() {
-    local yaml_file=$1
-
-    if command -v yq &> /dev/null; then
-        yq '.specification.version' "$yaml_file"
-    else
-        sed -n '/specification:/,/version:/ s/.*version: //p' "$yaml_file" | tail -1
-    fi
-}
+source "${SCRIPT_DIR}/common.sh"
 
 TAG=$1
 
