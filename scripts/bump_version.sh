@@ -28,7 +28,7 @@ fi
 
 V_TAG="v$TAG"
 
-BRANCH=`git rev-parse --abbrev-ref HEAD`
+BRANCH=$(git rev-parse --abbrev-ref HEAD)
 CURRENT_TAG=$(get_spec_version connector.yaml)
 MSG="You are about to bump the version from ${CURRENT_TAG} to ${V_TAG} on branch '${BRANCH}'.\n"
 while true; do
