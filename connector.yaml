@@ -3,7 +3,7 @@ specification:
   name: connectorname
   summary: A brief description of your connector.
   description: A detailed description of your connector.
-  version: v0.0.1
+  version: v2.3.4
   author: Your Name
   source:
     parameters:
