@@ -12,7 +12,7 @@ start working on a Conduit connector in a matter of seconds.
     ```sh
    ./setup.sh github.com/myusername/conduit-connector-myconnector
    ```
-3. Fill out the specification in `connector.yaml`. `source` and `destination`
+3. Fill out the specification in `connector.yaml`. The `source` and `destination` sections under this file
    shouldn't be changed, as they are automatically generated from the source and
    destination configuration structs. 
 4. Commit your changes:

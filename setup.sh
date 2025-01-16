@@ -1,4 +1,24 @@
 #!/bin/bash
+
+function cleanup_project_automation() {
+    # Get the remote URL and extract organization name
+    local REMOTE_URL=$(git config --get remote.origin.url)
+    local ORG_NAME=$(echo "$REMOTE_URL" | sed -E 's/.*[:/]([^/]*)\/.*/\1/')
+
+    # Check if organization matches and delete file if it exists
+    if [[ "$ORG_NAME" =~ ^(conduitio|conduitio-labs|meroxa)$ ]]; then
+        local FILE_PATH=".github/workflows/project_automation.yaml"
+        if [ -f "$FILE_PATH" ]; then
+            rm "$FILE_PATH"
+            echo "Deleted $FILE_PATH"
+        else
+            echo "File $FILE_PATH not found"
+        fi
+    else
+        echo "Keeping the project automation workflow for $ORG_NAME"
+    fi
+}
+
 if [ $# -eq 0 ]
 then
     echo "Module name not provided."
@@ -33,6 +53,8 @@ else
   find . -type f ! -name "setup.sh" -exec sed -i "s~connectorname~$CONNECTOR_NAME~g" {} +
   sed -i "s~*       @ConduitIO/conduit-core~ ~g" .github/CODEOWNERS
 fi
+
+cleanup_project_automation
 
 # Remove this script
 rm "$0"
