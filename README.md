@@ -64,7 +64,7 @@ setup, you need to adjust some repository settings.
 
    ![Add branch protection rule](https://github.com/ConduitIO/conduit-connector-template/assets/8320753/9f5a07bc-d141-42b9-9918-e8d9cc648482)
 
-3. Create a rule for branch `main` that requires status checks `build` and
+3. Create a rule for branch `main` that requires status checks `test` and
    `golangci-lint`.
 
    ![Status checks](https://github.com/ConduitIO/conduit-connector-template/assets/8320753/96219185-c329-432a-8623-9b4462015f32)
