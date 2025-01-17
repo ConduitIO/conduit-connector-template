@@ -1,8 +1,8 @@
 # Conduit Connector Template
 
 This is a template project for building [Conduit](https://conduit.io) connectors
-in Go. It makes it possible to
-start working on a Conduit connector in a matter of seconds.
+in Go. It makes it possible to start working on a Conduit connector in a matter
+of seconds.
 
 ## Quick start
 
@@ -12,9 +12,10 @@ start working on a Conduit connector in a matter of seconds.
     ```sh
    ./setup.sh github.com/myusername/conduit-connector-myconnector
    ```
-3. Fill out the specification in `connector.yaml`. The `source` and `destination` sections under this file
-   shouldn't be changed, as they are automatically generated from the source and
-   destination configuration structs. 
+3. Fill out the specification in `connector.yaml`. The `source` and
+   `destination` sections under this file shouldn't be changed, as they are
+   automatically generated from the source and destination configuration
+   structs.
 4. Commit your changes:
    ```sh
    ./setup.sh github.com/myusername/conduit-connector-myconnector
@@ -32,11 +33,17 @@ the [Conduit Connector SDK](https://github.com/ConduitIO/conduit-connector-sdk).
 * Skeleton code for the connector's configuration, source and destination.
 * Example unit tests.
 * A [Makefile](/Makefile) with commonly used targets.
+* A [script](/scripts/bump_version.sh) that bumps the connector version.
+* A [script](/scripts/tag.sh) that tags the connector (which kicks of a
+  release).
 * A [GitHub workflow](/.github/workflows/test.yml) to build the code and run the tests.
 * A [GitHub workflow](/.github/workflows/lint.yml) to run a pre-configured set of linters.
-* A [GitHub workflow](/.github/workflows/release.yml) which automatically creates a release when a tag is pushed.
-* A [Dependabot setup](/.github/dependabot.yml) which checks your dependencies for available updates and 
-[merges minor version upgrades](/.github/workflows/dependabot-auto-merge-go.yml) automatically.
+* A [GitHub workflow](/.github/workflows/release.yml) which automatically
+  creates a release when a tag is pushed.
+* A [Dependabot setup](/.github/dependabot.yml) which checks your dependencies
+  for available updates
+  and [merges minor version upgrades](/.github/workflows/dependabot-auto-merge-go.yml)
+  automatically.
 * [Issue](/.github/ISSUE_TEMPLATE) and [PR templates](/.github/pull_request_template.md).
 * A [README template](/README_TEMPLATE.md).
 
@@ -45,9 +52,9 @@ the [Conduit Connector SDK](https://github.com/ConduitIO/conduit-connector-sdk).
 > [!NOTE]
 > This applies only to public connector repositories, as branch protection rules are not enforced in private repositories.
 
-The template makes it simple to keep your connector up-to-date using automatic merging of
-[Dependabot](https://github.com/dependabot) PRs. To make use of this setup, you need to adjust
-some repository settings.
+The template makes it simple to keep your connector up-to-date using automatic
+merging of [Dependabot](https://github.com/dependabot) PRs. To make use of this
+setup, you need to adjust some repository settings.
 
 1. Navigate to Settings -> General and allow auto-merge of PRs.
 
@@ -57,7 +64,8 @@ some repository settings.
 
    ![Add branch protection rule](https://github.com/ConduitIO/conduit-connector-template/assets/8320753/9f5a07bc-d141-42b9-9918-e8d9cc648482)
 
-3. Create a rule for branch `main` that requires status checks `build` and `golangci-lint`.
+3. Create a rule for branch `main` that requires status checks `test` and
+   `golangci-lint`.
 
    ![Status checks](https://github.com/ConduitIO/conduit-connector-template/assets/8320753/96219185-c329-432a-8623-9b4462015f32)
 
