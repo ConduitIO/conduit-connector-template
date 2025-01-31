@@ -60,3 +60,5 @@ cleanup_project_automation
 rm "$0"
 rm README.md
 mv README_TEMPLATE.md README.md
+
+make generate
