@@ -1,6 +1,6 @@
-# Conduit Connector for <!-- readmegen:name --> <!-- /readmegen:name -->
+# Conduit Connector for <!-- readmegen:name --> <resource> <!-- /readmegen:name -->
 
-[Conduit](https://conduit.io) connector for <!-- readmegen:name --> some text <!-- /readmegen:name -->.
+[Conduit](https://conduit.io) connector for <!-- readmegen:name --> <resource> <!-- /readmegen:name -->.
 
 ## How to build?
 
@@ -13,9 +13,8 @@ downstream resources via Conduit.
 
 ### Configuration
 
-| name                  | description                           | required | default value |
-|-----------------------|---------------------------------------|----------|---------------|
-| `source_config_param` | Description of `source_config_param`. | true     | 1000          |
+<!-- readmegen:source.parameters.table -->
+<!-- /readmegen:source.parameters.table -->
 
 ## Destination
 
@@ -24,9 +23,8 @@ resource via Conduit.
 
 ### Configuration
 
-| name                       | description                                | required | default value |
-|----------------------------|--------------------------------------------|----------|---------------|
-| `destination_config_param` | Description of `destination_config_param`. | true     | 1000          |
+<!-- readmegen:destination.parameters.table -->
+<!-- /readmegen:destination.parameters.table -->
 
 ## Testing
 
