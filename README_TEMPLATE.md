@@ -13,8 +13,8 @@ downstream resources via Conduit.
 
 ### Configuration
 
-<!-- readmegen:source.parameters.table -->
-<!-- /readmegen:source.parameters.table -->
+<!-- readmegen:source.parameters.yaml -->
+<!-- /readmegen:source.parameters.yaml -->
 
 ## Destination
 
@@ -23,8 +23,8 @@ resource via Conduit.
 
 ### Configuration
 
-<!-- readmegen:destination.parameters.table -->
-<!-- /readmegen:destination.parameters.table -->
+<!-- readmegen:destination.parameters.yaml -->
+<!-- /readmegen:destination.parameters.yaml -->
 
 ## Testing
 
