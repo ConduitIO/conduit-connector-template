@@ -7,15 +7,15 @@ function cleanup_project_automation() {
 
     # Check if organization matches and delete file if it exists
     if [[ "$ORG_NAME" =~ ^(conduitio|conduitio-labs|meroxa)$ ]]; then
-        local FILE_PATH=".github/workflows/project_automation.yaml"
-        if [ -f "$FILE_PATH" ]; then
-            rm "$FILE_PATH"
-            echo "Deleted $FILE_PATH"
-        else
-            echo "File $FILE_PATH not found"
-        fi
+      echo "Keeping the project automation workflow for $ORG_NAME"
     else
-        echo "Keeping the project automation workflow for $ORG_NAME"
+      local FILE_PATH=".github/workflows/project_automation.yaml"
+      if [ -f "$FILE_PATH" ]; then
+        rm "$FILE_PATH"
+          echo "Deleted $FILE_PATH"
+      else
+        echo "File $FILE_PATH not found"
+      fi
     fi
 }
 
