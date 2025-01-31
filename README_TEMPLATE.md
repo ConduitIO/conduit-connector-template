@@ -1,6 +1,6 @@
-# Conduit Connector for <resource>
+# Conduit Connector for <!-- readmegen:name --> <!-- /readmegen:name -->
 
-[Conduit](https://conduit.io) connector for <resource>.
+[Conduit](https://conduit.io) connector for <!-- readmegen:name --> some text <!-- /readmegen:name -->.
 
 ## How to build?
 

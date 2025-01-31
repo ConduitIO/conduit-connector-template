@@ -16,6 +16,13 @@ specification:
         validations:
           - type: required
             value: ""
+      - name: sourceConfigParam
+        description: SourceConfigParam must be provided by the user.
+        type: string
+        default: ""
+        validations:
+          - type: required
+            value: ""
       - name: sdk.batch.delay
         description: Maximum delay before an incomplete batch is read from the source.
         type: duration
@@ -78,22 +85,8 @@ specification:
         validations:
           - type: inclusion
             value: avro
-      - name: sourceConfigParam
-        description: SourceConfigParam must be provided by the user.
-        type: string
-        default: ""
-        validations:
-          - type: required
-            value: ""
   destination:
     parameters:
-      - name: destinationConfigParam
-        description: DestinationConfigParam must be either yes or no (defaults to yes).
-        type: string
-        default: "yes"
-        validations:
-          - type: inclusion
-            value: yes,no
       - name: global_config_param_name
         description: |-
           GlobalConfigParam is named global_config_param_name and needs to be
@@ -103,6 +96,13 @@ specification:
         validations:
           - type: required
             value: ""
+      - name: destinationConfigParam
+        description: DestinationConfigParam must be either yes or no (defaults to yes).
+        type: string
+        default: "yes"
+        validations:
+          - type: inclusion
+            value: yes,no
       - name: sdk.batch.delay
         description: Maximum delay before an incomplete batch is written to the destination.
         type: duration

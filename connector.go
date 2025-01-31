@@ -1,4 +1,4 @@
-//go:generate specgen
+//go:generate conn-sdk-cli specgen
 
 package connectorname
 
@@ -11,8 +11,10 @@ import (
 //go:embed connector.yaml
 var specs string
 
+var version = "(devel)"
+
 var Connector = sdk.Connector{
-	NewSpecification: sdk.YAMLSpecification(specs),
+	NewSpecification: sdk.YAMLSpecification(specs, version),
 	NewSource:        NewSource,
 	NewDestination:   NewDestination,
 }
