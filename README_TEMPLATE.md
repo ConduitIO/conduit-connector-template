@@ -25,6 +25,12 @@ resource via Conduit.
 <!-- readmegen:destination.parameters.yaml -->
 <!-- /readmegen:destination.parameters.yaml -->
 
+## Development
+
+- To install the required tools, run `make install-tools`.
+- To generate code (mocks, re-generate `connector.yaml`, update the README,
+  etc.), run `make generate`.
+
 ## How to build?
 
 Run `make build` to build the connector.
