@@ -2,9 +2,8 @@
 
 [Conduit](https://conduit.io) connector for <!-- readmegen:name --> <resource> <!-- /readmegen:name -->.
 
-## How to build?
-
-Run `make build` to build the connector.
+<!-- readmegen:description -->
+<!-- /readmegen:description -->
 
 ## Source
 
@@ -25,6 +24,10 @@ resource via Conduit.
 
 <!-- readmegen:destination.parameters.yaml -->
 <!-- /readmegen:destination.parameters.yaml -->
+
+## How to build?
+
+Run `make build` to build the connector.
 
 ## Testing
 

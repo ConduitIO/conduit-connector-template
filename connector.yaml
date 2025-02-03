@@ -2,7 +2,12 @@ version: "1.0"
 specification:
   name: connectorname
   summary: A brief description of your connector.
-  description: A detailed description of your connector.
+  description: |-
+    This is a detailed description of your connector.
+    
+    It can contain information about the features and limitations of the connector, usage instructions, etc.
+    
+    By default, it's inserted into the README file and Markdown syntax can be used.
   version: v0.0.1
   author: Your Name
   source:
