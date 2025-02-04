@@ -1,12 +1,8 @@
 package connectorname
 
-//go:generate paramgen -output=paramgen_src.go SourceConfig
-
 import (
 	"context"
-	"fmt"
 
-	"github.com/conduitio/conduit-commons/config"
 	"github.com/conduitio/conduit-commons/opencdc"
 	sdk "github.com/conduitio/conduit-connector-sdk"
 )
@@ -19,39 +15,25 @@ type Source struct {
 }
 
 type SourceConfig struct {
+	sdk.DefaultSourceMiddleware
 	// Config includes parameters that are the same in the source and destination.
 	Config
-	// SourceConfigParam is named foo and must be provided by the user.
-	SourceConfigParam string `json:"foo" validate:"required"`
+	// SourceConfigParam must be provided by the user.
+	SourceConfigParam string `json:"sourceConfigParam" validate:"required"`
+}
+
+func (s *SourceConfig) Validate(context.Context) error {
+	// Custom validation or parsing should be implemented here.
+	return nil
 }
 
 func NewSource() sdk.Source {
 	// Create Source and wrap it in the default middleware.
-	return sdk.SourceWithMiddleware(&Source{}, sdk.DefaultSourceMiddleware()...)
+	return sdk.SourceWithMiddleware(&Source{})
 }
 
-func (s *Source) Parameters() config.Parameters {
-	// Parameters is a map of named Parameters that describe how to configure
-	// the Source. Parameters can be generated from SourceConfig with paramgen.
-	return s.config.Parameters()
-}
-
-func (s *Source) Configure(ctx context.Context, cfg config.Config) error {
-	// Configure is the first function to be called in a connector. It provides
-	// the connector with the configuration that can be validated and stored.
-	// In case the configuration is not valid it should return an error.
-	// Testing if your connector can reach the configured data source should be
-	// done in Open, not in Configure.
-	// The SDK will validate the configuration and populate default values
-	// before calling Configure. If you need to do more complex validations you
-	// can do them manually here.
-
-	sdk.Logger(ctx).Info().Msg("Configuring Source...")
-	err := sdk.Util.ParseConfig(ctx, cfg, &s.config, NewSource().Parameters())
-	if err != nil {
-		return fmt.Errorf("invalid config: %w", err)
-	}
-	return nil
+func (s *Source) Config() sdk.SourceConfig {
+	return &s.config
 }
 
 func (s *Source) Open(_ context.Context, _ opencdc.Position) error {

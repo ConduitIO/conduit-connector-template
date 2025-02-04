@@ -19,6 +19,7 @@ test-integration:
 .PHONY: generate
 generate:
 	go generate ./...
+	conn-sdk-cli readmegen -w
 
 .PHONY: install-tools
 install-tools:
