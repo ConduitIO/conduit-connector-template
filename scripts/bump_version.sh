@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 # Copyright © 2025 Meroxa, Inc.
 #
@@ -26,6 +27,12 @@ if ! check_semver "$TAG"; then
     exit 1
 fi
 
+# Check if yq is installed
+if ! command -v yq &> /dev/null; then
+    echo "Error: yq is not installed. Please install it and try again."
+    exit 1
+fi
+
 V_TAG="v$TAG"
 
 BRANCH=$(git rev-parse --abbrev-ref HEAD)
@@ -39,7 +46,7 @@ while true; do
         [Yy]* )
             BRANCH_NAME="update-version-$V_TAG"
             git checkout -b "$BRANCH_NAME"
-            sed -i '/specification:/,/version:/ s/version: .*/version: '"${V_TAG}"'/' connector.yaml
+            yq e ".specification.version = \"${V_TAG}\"" -i connector.yaml
             git commit -am "Update version to $V_TAG"
             git push origin "$BRANCH_NAME"
 

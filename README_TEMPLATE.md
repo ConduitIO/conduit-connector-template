@@ -1,10 +1,9 @@
-# Conduit Connector for <resource>
+# Conduit Connector for <!-- readmegen:name --> <resource> <!-- /readmegen:name -->
 
-[Conduit](https://conduit.io) connector for <resource>.
+[Conduit](https://conduit.io) connector for <!-- readmegen:name --> <resource> <!-- /readmegen:name -->.
 
-## How to build?
-
-Run `make build` to build the connector.
+<!-- readmegen:description -->
+<!-- /readmegen:description -->
 
 ## Source
 
@@ -13,9 +12,8 @@ downstream resources via Conduit.
 
 ### Configuration
 
-| name                  | description                           | required | default value |
-|-----------------------|---------------------------------------|----------|---------------|
-| `source_config_param` | Description of `source_config_param`. | true     | 1000          |
+<!-- readmegen:source.parameters.yaml -->
+<!-- /readmegen:source.parameters.yaml -->
 
 ## Destination
 
@@ -24,9 +22,18 @@ resource via Conduit.
 
 ### Configuration
 
-| name                       | description                                | required | default value |
-|----------------------------|--------------------------------------------|----------|---------------|
-| `destination_config_param` | Description of `destination_config_param`. | true     | 1000          |
+<!-- readmegen:destination.parameters.yaml -->
+<!-- /readmegen:destination.parameters.yaml -->
+
+## Development
+
+- To install the required tools, run `make install-tools`.
+- To generate code (mocks, re-generate `connector.yaml`, update the README,
+  etc.), run `make generate`.
+
+## How to build?
+
+Run `make build` to build the connector.
 
 ## Testing
 

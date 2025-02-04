@@ -2,7 +2,12 @@ version: "1.0"
 specification:
   name: connectorname
   summary: A brief description of your connector.
-  description: A detailed description of your connector.
+  description: |-
+    This is a detailed description of your connector.
+
+    It can contain information about the features and limitations of the connector, usage instructions, etc.
+
+    By default, it's inserted into the README file and Markdown syntax can be used.
   version: v0.0.1
   author: Your Name
   source:
@@ -11,6 +16,13 @@ specification:
         description: |-
           GlobalConfigParam is named global_config_param_name and needs to be
           provided by the user.
+        type: string
+        default: ""
+        validations:
+          - type: required
+            value: ""
+      - name: sourceConfigParam
+        description: SourceConfigParam must be provided by the user.
         type: string
         default: ""
         validations:
@@ -78,22 +90,8 @@ specification:
         validations:
           - type: inclusion
             value: avro
-      - name: sourceConfigParam
-        description: SourceConfigParam must be provided by the user.
-        type: string
-        default: ""
-        validations:
-          - type: required
-            value: ""
   destination:
     parameters:
-      - name: destinationConfigParam
-        description: DestinationConfigParam must be either yes or no (defaults to yes).
-        type: string
-        default: "yes"
-        validations:
-          - type: inclusion
-            value: yes,no
       - name: global_config_param_name
         description: |-
           GlobalConfigParam is named global_config_param_name and needs to be
@@ -103,6 +101,13 @@ specification:
         validations:
           - type: required
             value: ""
+      - name: destinationConfigParam
+        description: DestinationConfigParam must be either yes or no (defaults to yes).
+        type: string
+        default: "yes"
+        validations:
+          - type: inclusion
+            value: yes,no
       - name: sdk.batch.delay
         description: Maximum delay before an incomplete batch is written to the destination.
         type: duration
