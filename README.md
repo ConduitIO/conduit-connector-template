@@ -7,22 +7,17 @@ of seconds.
 ## Quick start
 
 1. Click [_Use this template_](https://github.com/new?template_name=conduit-connector-template&template_owner=ConduitIO) and clone your new repository.
-2. Initialize the repository using [
-   `setup.sh`](https://github.com/ConduitIO/conduit-connector-template/blob/main/setup.sh)
-    ```sh
-   ./setup.sh github.com/myusername/conduit-connector-myconnector
-   ```
-3. Fill out the specification in `connector.yaml`. The `source` and
-   `destination` sections under this file shouldn't be changed, as they are
-   automatically generated from the source and destination configuration
-   structs.
-4. Commit your changes:
+2. Initialize the repository using [`setup.sh`](https://github.com/ConduitIO/conduit-connector-template/blob/main/setup.sh) and commit your changes.
    ```sh
    ./setup.sh github.com/myusername/conduit-connector-myconnector
    git add -A
    git commit -m "initialize repository"
    ```
-5. Set up [automatic Dependabot PR merges](#automatically-merging-dependabot-prs).
+3. Fill out the `summary` and `description` in `connector.yaml`. Note that the
+   `source` and `destination` sections in this file shouldn't be changed, as
+   they are automatically generated from the source and destination configuration
+   structs.
+4. Set up [automatic Dependabot PR merges](#automatically-merging-dependabot-prs).
 
 With that, you're all set up and ready to start working on your connector! As a
 next step, we recommend that you check out
