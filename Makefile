@@ -17,7 +17,7 @@ test-integration:
 		exit $$ret
 
 .PHONY: generate
-generate: install-tools
+generate:
 	go generate ./...
 	conn-sdk-cli readmegen -w
 

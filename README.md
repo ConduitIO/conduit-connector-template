@@ -23,6 +23,7 @@ of seconds.
    git commit -m "initialize repository"
    ```
 5. Set up [automatic Dependabot PR merges](#automatically-merging-dependabot-prs).
+6. Run `make install-tools` to install the tooling needed.
 
 With that, you're all set up and ready to start working on your connector! As a
 next step, we recommend that you check out
