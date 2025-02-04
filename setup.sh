@@ -61,4 +61,8 @@ rm "$0"
 rm README.md
 mv README_TEMPLATE.md README.md
 
+if ! command -v conn-sdk-cli >/dev/null 2>&1; then
+    echo "conn-sdk-cli is not installed, installing tools needed for connector development"
+    make install-tools
+fi
 make generate
