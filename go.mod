@@ -3,7 +3,7 @@ module github.com/conduitio/conduit-connector-connectorname
 go 1.24.2
 
 require (
-	github.com/conduitio/conduit-commons v0.5.4
+	github.com/conduitio/conduit-commons v0.6.0
 	github.com/conduitio/conduit-connector-sdk v0.14.0
 	github.com/matryer/is v1.4.1
 )
