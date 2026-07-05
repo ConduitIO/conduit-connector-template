@@ -1,6 +1,6 @@
 module github.com/conduitio/conduit-connector-connectorname
 
-go 1.24.2
+go 1.25.0
 
 require (
 	github.com/conduitio/conduit-commons v0.6.0
